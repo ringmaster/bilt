@@ -1,0 +1,19 @@
+{
+  "name": "bilt",
+  "version": "2.4.0",
+  "description": "A single-file base dependnecy",
+  "author": {
+    "name": "Owen Winkler",
+    "email": "epithet@gmail.com"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-bower": "0.0.10",
+    "gulp-concat": "^2.5.2",
+    "gulp-sequence": "^0.3.2",
+    "gulp-sourcemaps": "^1.5.0",
+    "gulp-uglifyjs": "^0.6.0",
+    "gulp-wrap": "^0.11.0",
+    "yargs": "^3.4.5"
+  }
+}
