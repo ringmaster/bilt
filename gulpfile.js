@@ -13,11 +13,11 @@ gulp.task('bower', function() {
 });
 
 gulp.task('framework', function(){
-    return gulp.src(['bower_components/kube/less/*.less'])
+    return gulp.src(['bower_components/bootstrap/less/**/*.less'])
         .pipe(template({
             namespace: 'BILT_LESS',
             name: function(file) {
-                return 'less/' + file.relative.replace(/\.less$/, '');
+                return 'bilt/' + file.relative;
             }
         }))
         .pipe(concat('framework.js'))
@@ -27,13 +27,14 @@ gulp.task('framework', function(){
 gulp.task('build', ['framework'], function(){
     console.log(argv);
     return gulp.src([
-        'bower_components/jquery/dist/jquery.js',
-        'bower_components/underscore/underscore.js',
+        //'bower_components/jQuery/jquery.js',
+        'bower_components/zepto-full/zepto.js',
+        'bower_components/lazy/lazy.js',
         'generated/js/framework.js',
         'bower_components/less/dist/less.js',
         'bootstrap.js'
     ])
-        .pipe(concat('bilt.js'))
+        .pipe(concat('bilt.js', {newLine: ';'}))
         .pipe(uglify('bilt.js', {
             mangle: argv.mangle ? true : false,
             compress: argv.compress ? true : false,

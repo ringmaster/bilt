@@ -2,11 +2,10 @@
   "name": "bilt",
   "version": "1.0",
   "dependencies": {
-    "jquery": "latest",
-    "jquery-ui": "latest",
-    "underscore": "latest",
-    "less": "latest",
-    "kube": "imperavi/kube"
+    "zepto-full": "latest",
+    "lazy": "dtao/lazy.js",
+    "less": "less/less.js",
+    "bootstrap": "latest"
   },
   "private": true
 }

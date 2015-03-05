@@ -4,27 +4,151 @@
     <meta charset="UTF-8">
     <title>Bilt Sample File</title>
     <script src="../dist/js/bilt.js"></script>
+    <style type="text/less" data-overload="bilt/variables.less">
+       /**  This element overloads the values in the specified file */
+        @brand-primary : darken(#673957, 6.5%);
+        @brand-success : #580843;
+        @brand-info :    #5bc0de;
+        @brand-warning : #f0ad4e;
+        @brand-danger :  #d9534f;
+    </style>
     <style type="text/less">
-        body {
-            background-color: green;
 
-            h1 {
-                text-transform: uppercase;
+        @import "bilt/bootstrap.less";
+
+        /* Space out content a bit */
+        body {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        /* Everything but the jumbotron gets side spacing for mobile first views */
+        .header,
+        .marketing,
+        .footer {
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+
+        /* Custom page header */
+        .header {
+            border-bottom: 1px solid #e5e5e5;
+            /* Make the masthead heading the same height as the navigation */
+            h3 {
+                padding-bottom: 19px;
+                margin-top: 0;
+                margin-bottom: 0;
+                line-height: 40px;
+            }
+        }
+
+        /* Custom page footer */
+        .footer {
+            padding-top: 19px;
+            color: #777;
+            border-top: 1px solid #e5e5e5;
+        }
+
+        /* Customize container */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 730px;
+            }
+        }
+        .container-narrow > hr {
+            margin: 30px 0;
+        }
+
+        /* Main marketing message and sign up button */
+        .jumbotron {
+            text-align: center;
+            border-bottom: 1px solid #e5e5e5;
+            .btn {
+                padding: 14px 24px;
+                font-size: 21px;
+            }
+        }
+
+        /* Supporting marketing content */
+        .marketing {
+            margin: 40px 0;
+            p + h4 {
+                margin-top: 28px;
+            }
+        }
+
+        /* Responsive: Portrait tablets and up */
+        @media screen and (min-width: 768px) {
+            /* Remove the padding we set earlier */
+            .header,
+            .marketing,
+            .footer {
+                padding-right: 0;
+                padding-left: 0;
+            }
+            /* Space out the masthead */
+            .header {
+                margin-bottom: 30px;
+            }
+            /* Remove the bottom border on the jumbotron for visual effect */
+            .jumbotron {
+                border-bottom: 0;
             }
         }
     </style>
 </head>
 <body>
 
-<h1>Bilt Sample File</h1>
+<div class="container">
+    <div class="header">
+        <nav>
+            <ul class="nav nav-pills pull-right">
+                <li role="presentation" class="active"><a href="#">Home</a></li>
+                <li role="presentation"><a href="#">About</a></li>
+                <li role="presentation"><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <h3 class="text-muted">Bilt Sample File</h3>
+    </div>
 
-<p>This is a Bilt Sample file.</p>
+    <div class="jumbotron">
+        <h1>Bilt Sample</h1>
+        <p class="lead">
+            All of the based styles and javascript on this page were provided via a single script tag.  A LESS compiler
+            embedded on the page compiled in some custom styles, allowing customization of the layout.
+        </p>
+        <p><a class="btn btn-lg btn-success" href="#" role="button">Use Bilt today</a></p>
+    </div>
 
-<div class="units-row">
-    <div class="unit-50">Hello world</div>
-    <div class="unit-50">It's Kube Grid System</div>
-</div>
+    <div class="row marketing">
+        <div class="col-lg-6">
+            <h4>Subheading</h4>
+            <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
 
+            <h4>Subheading</h4>
+            <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+
+            <h4>Subheading</h4>
+            <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+        </div>
+
+        <div class="col-lg-6">
+            <h4>Subheading</h4>
+            <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+
+            <h4>Subheading</h4>
+            <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+
+            <h4>Subheading</h4>
+            <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; Company 2015</p>
+    </footer>
+
+</div> <!-- /container -->
 
 </body>
 </html>
