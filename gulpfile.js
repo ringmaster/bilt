@@ -5,55 +5,32 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglifyjs');
 var sourcemaps = require('gulp-sourcemaps');
 var argv = require('yargs').argv;
+var template = require('gulp-template-compile');
 var sequence = require('gulp-sequence');
  
-gulp.task('init', function() {
+gulp.task('bower', function() {
   return bower();
 });
 
-gulp.task('templates', function(){
-    return gulp.src(['app/templates/*.us'])
+gulp.task('framework', function(){
+    return gulp.src(['bower_components/kube/less/*.less'])
         .pipe(template({
-            namespace: 'CMM_WIDGET_JST',
+            namespace: 'BILT_LESS',
             name: function(file) {
-                return 'templates/' + file.relative.replace(/\.us$/, '');
+                return 'less/' + file.relative.replace(/\.less$/, '');
             }
         }))
-        .pipe(concat('templates.js'))
+        .pipe(concat('framework.js'))
         .pipe(gulp.dest('generated/js'));
 });
 
-gulp.task('css', function(){
-    return gulp.src('app/css/main.less')
-        .pipe(sourcemaps.init())
-        .pipe(less())
-        .pipe(sourcemaps.write())
-        .pipe(gulp.dest('generated/css'));
-});
-
-gulp.task('buildcss', ['css'], function(){
-    return gulp.src([
-            'vendor/css/*.css',
-            'generated/css/*.css'
-        ])
-        .pipe(concat('main.css'))
-        .pipe(template({
-            namespace: 'CMM_WIDGET_JST',
-            name: function(file) {
-                return 'generated/css/' + file.relative;
-            }
-        }))
-        .pipe(concat('css.js'))
-        .pipe(gulp.dest('generated/js'));
-});
-
-gulp.task('build', function(){
+gulp.task('build', ['framework'], function(){
     console.log(argv);
     return gulp.src([
         'bower_components/jquery/dist/jquery.js',
         'bower_components/underscore/underscore.js',
-        'generated/js/css.js',
-        'generated/js/templates.js',
+        'generated/js/framework.js',
+        'bower_components/less/dist/less.js',
         'bootstrap.js'
     ])
         .pipe(concat('bilt.js'))
@@ -70,6 +47,6 @@ gulp.task('build', function(){
 gulp.task('set_compress', function(){
     argv.mangle = true;
     argv.compress = true;
-})
+});
 
 gulp.task('compressed', sequence('set_compress', 'build'));
